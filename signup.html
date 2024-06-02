@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('./assets/car2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            color: #6b7280;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .signup-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .signup-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .signup-container input[type="text"],
+        .signup-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0a0b0f;
+            color: #ffffff;
+        }
+
+        .signup-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #da042a;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .signup-container input[type="submit"]:hover {
+            background-color: #c00427;
+        }
+
+        .signup-container a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+        .signup-container a:hover {
+            color: #ffffff;
+        }
+
+        .error {
+            color: #da042a;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav__bar">
+        <div class="logo nav__logo">
+          <a href="#"><img src="assets/logo.png" alt="logo" /></a>
+        </div>
+    
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form id="signupForm" action="#" method="post" onsubmit="return handleSignUp()">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <br>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <br>
+            <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" required>
+            <br>
+            <div class="error" id="error"></div>
+            <input type="submit" value="Sign Up">
+        </form>
+        <p>Have an account? <a href="login.html">Login</a></p>
+    </div>
+
+    <script>
+        function handleSignUp() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm_password').value;
+            var error = document.getElementById('error');
+
+            if (password !== confirmPassword) {
+                error.textContent = "Passwords do not match.";
+                return false;
+            }
+
+            // Save credentials to localStorage
+            localStorage.setItem('username', username);
+            localStorage.setItem('password', password);
+
+            // Redirect to login page
+            window.location.href = "login.html";
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>

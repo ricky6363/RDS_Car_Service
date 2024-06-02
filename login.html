@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('./assets/car2.jpg'); 
+            background-size: cover;
+            background-position: center;
+            color: #6b7280;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #0a0b0f;
+            color: #ffffff;
+        }
+
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #da042a;
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #c00427;
+        }
+
+        .login-container a {
+            color: #6b7280;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            color: #ffffff;
+        }
+
+        .error {
+            color: #da042a;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+      <div class="nav__bar">
+        <div class="logo nav__logo">
+          <a href="#"><img src="assets/logo.png" alt="logo" /></a>
+        </div>
+<div class="login-container">
+    <h2>Login</h2>
+        <form id="loginForm" action="#" method="post" onsubmit="return handleLogin()">
+            <input type="text" id="username" name="username" placeholder="Username" required>
+            <br>
+            <input type="password" id="password" name="password" placeholder="Password" required>
+            <br>
+            <div class="error" id="error"></div>
+            <input type="submit" value="Login">
+        </form>
+        <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+
+    <script>
+        function handleLogin() {
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+            var error = document.getElementById('error');
+
+            // Retrieve saved credentials from localStorage
+            var savedUsername = localStorage.getItem('username');
+            var savedPassword = localStorage.getItem('password');
+
+            if (username === savedUsername && password === savedPassword) {
+                // Redirect to index.html
+                window.location.href = "index.html";
+                return false; // Prevent form submission
+            } else {
+                error.textContent = "Invalid username or password.";
+                return false;
+            }
+        }
+    </script>
+</body>
+</html>
